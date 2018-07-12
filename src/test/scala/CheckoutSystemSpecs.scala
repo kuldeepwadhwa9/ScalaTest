@@ -12,24 +12,28 @@ class CheckoutSystemSpecs extends FlatSpec with Matchers {
     """.stripMargin
   }
 
-  it should "Calculate the total cost of 3 apples" in {
-    val apples = Seq("Apple", "Apple", "Apple")
-    CheckoutSystem.checkoutCost(apples) should be("£1.20")
+  it should "Calculate the total cost of 1 apple - basic test" in {
+    val apple = Seq("Apple")
+    CheckoutSystem.checkoutCost(apple) should be("£0.60")
   }
 
-  it should "Calculate the total cost of 5 oranges" in {
-    val oranges = Seq("Orange", "Orange", "Orange", "Orange", "Orange")
-    CheckoutSystem.checkoutCost(oranges) should be("£1.00")
+  it should "Calculate the total cost of 2 apple - promotional offer test" in {
+    val apples = Seq("Apple", "Apple")
+    CheckoutSystem.checkoutCost(apples) should be("£0.60")
   }
 
-  it should "Calculate the total cost of 5 apples and 6 oranges" in {
-    val fruits = Seq("Apple", "Apple", "Apple", "Apple", "Apple", "Orange", "Orange", "Orange", "Orange", "Orange", "Orange")
-    CheckoutSystem.checkoutCost(fruits) should be("£2.80")
+  it should "Calculate the total cost of 1 orange - basic test" in {
+    val orange = Seq("Orange")
+    CheckoutSystem.checkoutCost(orange) should be("£0.25")
   }
 
-  it should "Calculate the total cost of 1 apples and 2 oranges" in {
-    val fruits = Seq("Apple", "Orange", "Orange")
+  it should "Calculate the total cost of 3 oranges - promotional offer test" in {
+    val oranges = Seq("Orange", "Orange", "Orange")
+    CheckoutSystem.checkoutCost(oranges) should be("£0.50")
+  }
+
+  it should "Calculate the total cost of 2 apples and 3 oranges- mixed test" in {
+    val fruits = Seq("Apple", "Apple", "Orange", "Orange", "Orange")
     CheckoutSystem.checkoutCost(fruits) should be("£1.10")
   }
-
 }
