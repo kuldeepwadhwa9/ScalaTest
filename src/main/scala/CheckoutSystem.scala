@@ -5,24 +5,22 @@ class CheckoutSystem {
 
   def checkoutCost(items: Seq[String]) = {
 
-    val costOfOranges = offerOnApplesItems(items.filter(_ == "Orange"), 3, costOfSingleOrange)
-    val costOfApples = offerOnApplesItems(items.filter(_ == "Apple"), 2, costOfSingleApple)
+    val costOfOranges = offerOnItems(items.filter(_ == "Orange"), 3, costOfSingleOrange)
+    val costOfApples = offerOnItems(items.filter(_ == "Apple"), 2, costOfSingleApple)
 
     val totalCost = costOfOranges + costOfApples
     f"£$totalCost%.2f"
   }
 
-  def offerOnApplesItems(fruits: Seq[String], offeredItems: Int, costOfSingleItem: Double) = {
+  def offerOnItems(fruits: Seq[String], offeredItems: Int, costOfSingleItem: Double) = {
     var count = 0
     var cost: Double = 0.0
-    fruits.map {
-      _ => {
-        if (count < offeredItems - 1) {
-          cost = cost + costOfSingleItem
-          count = count + 1
-        }
-        else count = 0
+    fruits.foreach { _ =>
+      if (count < offeredItems - 1) {
+        cost = cost + costOfSingleItem
+        count = count + 1
       }
+      else count = 0
     }
     cost
   }
