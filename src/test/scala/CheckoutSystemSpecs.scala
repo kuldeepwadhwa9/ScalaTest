@@ -8,7 +8,7 @@ class CheckoutSystemSpecs extends FlatSpec with Matchers {
       |
       |##`checkoutCost`
       |
-      |The function takes list of items scanned a tht till and outputs the total cost
+      |The function takes list of items scanned at the till and outputs the total cost
     """.stripMargin
   }
 
